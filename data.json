@@ -30,7 +30,8 @@
     {"edgeAttributes": { [{
         "source node": "aa"
         "target node": "bb"
-        "directed": "yes"},
+        "directed": "yes"}
+    },
         {
             "source node": "bb"
             "target node": "cc"
