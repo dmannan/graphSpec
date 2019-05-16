@@ -1,7 +1,7 @@
 ﻿Node Source,Node Target,weight
-aa,dd,22
-bb,ff,3
-cc,ee,0
-dd,aa,1
-ee,cc,11
-ff,ee,10
+11,22,22
+22,33,3
+33,44,0
+44,66,1
+55,11,11
+66,55,10
