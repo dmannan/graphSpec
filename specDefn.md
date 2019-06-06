@@ -13,7 +13,7 @@ edgeAttributes: defines edge-level attributes. Please specifically use the the t
 When defining the attributes, if the attribute is binary use "yes" or "no" as options in the spec.
 If there are attributes that are common among the nodes/edges, for example metadata contained in atlases, please create a separate json for them instead of subsuming it into json for each of the graphs.
 ### MUST HAVE ATTRIBUTES:
-
+```
 { graphAttributes: {
 
 
@@ -26,13 +26,13 @@ If there are attributes that are common among the nodes/edges, for example metad
 
 }
 
-
+```
 
 
 
 
 ### OPTIONAL ATTRIBUTES: These attributes will be concatenated with the must have attributes to have a common dictionary
-
+```
 {
   graphAttributes: {
     "region": string, defines the region of the anatomy the graph is extracted from. Use biologically relevant terms
@@ -58,7 +58,7 @@ If there are attributes that are common among the nodes/edges, for example metad
 
 
 }
-
+```
 
 ### USER DEFINED ATTRIBUTES:
 Other options that the user can define. Please err on the side of well defined attributes.  
