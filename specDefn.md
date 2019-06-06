@@ -20,7 +20,10 @@ If there are attributes that are common among the nodes/edges, for example metad
 "multi-graph": defines if the graph is a multi-graph, options: "yes" or "no"
 "directed/undirected": defines if the graph is directed or not, options: "directed" or "undirected",
 "weighted": defines if the graph is weighted or not, options: "yes" or "no",
-"modality": defines the experimental modality used to obtain the data, options: string to specify the modality. Use full form of the modality: (i.e. "functional magnetic resonance imaging" instead of "fmri", etc)
+"hollow": "yes" or "no" to indicate the absence or presence, respectively, of self-loops
+"size": integer to indicate the number of nodes in the graph
+
+
 
 },
 
@@ -41,7 +44,8 @@ If there are attributes that are common among the nodes/edges, for example metad
 
     "atlas": name of the atlas the graph is registered to
     "subject ID": integers or string or both identifying the subject
-    "session number": integers 
+    "session number": integers
+    "modality": defines the experimental modality used to obtain the data, options: string to specify the modality. Use full form of the modality: (i.e. "functional magnetic resonance imaging" instead of "fmri", etc)
   },
 
   nodeAttributes:{
