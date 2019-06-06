@@ -14,7 +14,7 @@ When defining the attributes, if the attribute is binary use "yes" or "no" as op
 If there are attributes that are common among the nodes/edges, for example metadata contained in atlases, please create a separate json for them instead of subsuming it into jsons for each of the graphs.
 ### MUST HAVE ATTRIBUTES:
 
-graphAttributes: {
+{graphAttributes: {
 
 "species": string for species name,
 "multi-graph": defines if the graph is a multi-graph, options: "yes" or "no",
@@ -24,13 +24,14 @@ graphAttributes: {
 "region": string that defines the region of the anatomy the graph is extracted from. Use biologically relevant terms
 "sex": string defining the sex of the subject
 }
+}
 
 
 
 
 
 
-OPTIONAL ATTRIBUTES: These attributes will be concatenated with the must have attributes to have a common dictionary
+### OPTIONAL ATTRIBUTES: These attributes will be concatenated with the must have attributes to have a common dictionary
 
 {
   graphAttributes: {
@@ -56,5 +57,5 @@ OPTIONAL ATTRIBUTES: These attributes will be concatenated with the must have at
 }
 
 
-USER DEFINED ATTRIBUTES:
+### USER DEFINED ATTRIBUTES:
 Other options that the user can define.
