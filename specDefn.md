@@ -16,13 +16,12 @@ If there are attributes that are common among the nodes/edges, for example metad
 
 { graphAttributes: {
 
-"species": string for species name
+
 "multi-graph": defines if the graph is a multi-graph, options: "yes" or "no"
 "directed/undirected": defines if the graph is directed or not, options: "directed" or "undirected",
 "weighted": defines if the graph is weighted or not, options: "yes" or "no",
 "modality": defines the experimental modality used to obtain the data, options: string to specify the modality. Use full form of the modality: (i.e. "functional magnetic resonance imaging" instead of "fmri", etc)
-"region": string, defines the region of the anatomy the graph is extracted from. Use biologically relevant terms
-"sex": string defining the sex of the subject
+
 },
 
 }
@@ -36,6 +35,9 @@ If there are attributes that are common among the nodes/edges, for example metad
 
 {
   graphAttributes: {
+    "region": string, defines the region of the anatomy the graph is extracted from. Use biologically relevant terms
+    "sex": string defining the sex of the subject
+    "species": string for species name
 
     "atlas": name of the atlas the graph is registered to
   },
