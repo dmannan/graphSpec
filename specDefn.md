@@ -40,6 +40,8 @@ If there are attributes that are common among the nodes/edges, for example metad
     "species": string for species name
 
     "atlas": name of the atlas the graph is registered to
+    "subject ID": integers or string or both identifying the subject
+    "session number": integers 
   },
 
   nodeAttributes:{
