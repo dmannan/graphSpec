@@ -21,11 +21,11 @@ Please specifically use the term "node" to refer to these attributes instead of 
 "edgeAttributes": [list of keys contained in the json that define edge-level attributes], ex: ["type", etc]
 }
 ```
-Following the list of keys, the attributes themselves are defined as dictionaries, with the above mentioned keys and their corresponding values. Note: Nodes are referred to them by their **integers IDs**. Edges are referred to by their **"node source" and "node target"**. In the spec, please refrain from adding the "weights" of the edges, since the csv contains this information.:
+Following the list of keys, the attributes themselves are defined as dictionaries, with the above mentioned keys and their corresponding values. Note: Nodes are referred to them by their **integers IDs**. Edge attributes is a list of dictionaries, where the edges are referred to by their **"node source" and "node target"**. In the spec, please refrain from adding the "weights" of the edges, since the csv contains this information.:
 ```
 {"graph": {"key": "value"},
 "node": {"0":{"key": "value"}, "1": {"key": "value"}, etc},
-"edge": {"key": "values"}  ### need to work on how to format edges
+"edge": [{"node source": "value", "node target": "value", "attribute": "value"}, etc]
 
 }
 
