@@ -39,13 +39,13 @@ Hence, the **overall spec** would look as follows:
   "nodeAttributes": [keys],
   "edgeAttributes": [keys],
   "graph": {"key": value},
-  "node": {node ID:{"key": value},
+  "node": {node ID:{"key": value}},
   "edge": [{"node source": value, "node target": value, "key": value}]
 
 }
 
 
-}
+
 
 ```
 
