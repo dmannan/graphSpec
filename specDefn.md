@@ -32,6 +32,23 @@ Following the list of keys, the attributes themselves are defined as dictionarie
 
 ```
 
+Hence, the **overall spec** would look as follows:
+```
+{
+  "graphAttributes": [keys],
+  "nodeAttributes": [keys],
+  "edgeAttributes": [keys],
+  "graph": {"key": value},
+  "node": {node ID:{"key": value},
+  "edge": [{"node source": value, "node target": value, "key": value}]
+
+}
+
+
+}
+
+```
+
 When defining the attributes, if the attribute is binary use "yes" or "no" as options in the spec.
 If there are attributes that are common among the nodes/edges, for example metadata contained in atlases, please create a separate json for them instead of subsuming it into json for each of the graphs.
 
