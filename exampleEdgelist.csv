@@ -1,7 +1,7 @@
-﻿Node Source,Node Target,weight
-11,22,22
-22,33,3
-33,44,0
-44,66,1
-55,11,11
-66,55,10
+﻿Node Source,Node Target,graph1 weight,graph2 weight
+11,22,22,4
+22,33,3,10
+33,44,0,23
+44,66,1,65
+55,11,11,88
+66,55,10,99
