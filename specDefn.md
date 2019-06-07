@@ -11,12 +11,15 @@ The top level of the json contains a **list of keys** for each attribute for eve
 
 
 ```
-graphAttributes: [list of keys contained in the json that define global graph-level attributes], ex: ["multi-graph", "weughted", etc]
+{
+"graphAttributes": [list of keys contained in the json that define global graph-level attributes], ex: ["multi-graph", "weughted", etc]
 
-nodeAttributes: [list of keys contained in the json that define node-level attributes], ex: ["name", etc]. Please specifically use the term "node" to refer to these attributes instead of "vertex" or other synonyms.
+"nodeAttributes": [list of keys contained in the json that define node-level attributes], ex: ["name", etc].
+Please specifically use the term "node" to refer to these attributes instead of "vertex" or other synonyms.
 
 
-edgeAttributes: [list of keys contained in the json that define edge-level attributes], ex: ["type", etc].
+"edgeAttributes": [list of keys contained in the json that define edge-level attributes], ex: ["type", etc]
+}
 ```
 Following the list of keys, the attributes themselves are defined as dictionaries, with the above mentioned keys and their corresponding values. Note: Nodes are referred to them by their **integers IDs**. Edges are referred to by their **"node source" and "node target"**. In the spec, please refrain from adding the "weights" of the edges, since the csv contains this information.:
 ```
