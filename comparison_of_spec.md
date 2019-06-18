@@ -24,5 +24,8 @@ Cons:
 - some of the above arguments apply (with edges are separate objects so "node source/target" gets repetitive)
 
 
+Article describing file formats: http://www.maths.adelaide.edu.au/matthew.roughan/papers/hitch_hikers_guide.pdf
+https://gephi.org/users/supported-graph-formats/
+
 
 Our spec: we can easily get the graph, and metadata is separate.. above methods don't have this (the graph is with the metadata). Openml format matches ours
