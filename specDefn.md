@@ -35,7 +35,7 @@ And for each graph, there is a json defining its metadata.
 ``
 Attributes are broken into three levels, and their key/value pairs are formatted as a dictionary:
 
-The top level of the json contains a **list of attributes** for graph and node level, followed by the individual key/value pairs formatted as dictionary. Note, edge attributes DO NOT have a list of keys because that information is contained in the headers of the edgelist csv. In the json, the edge attributes will only be explained and WILL NOT contain key/value pairs:
+The top level of the json contains a **list of attributes** for graph and node level, followed by the individual key/value pairs formatted as dictionary. Note, edge attributes DO NOT have a list of keys because that information is contained in the headers of the edgelist csv. In the json, the edge attributes will only be explained and WILL NOT contain key/value pairs. Hence, edgeAttributes is a dictionary with keys are the attributes (headers of csv apart from node source/target) and value explains what the key is:
 
 
 
@@ -43,7 +43,9 @@ The top level of the json contains a **list of attributes** for graph and node l
 {
 "graphAttributes": [list of keys contained in the json that define global graph-level attributes], ex: ["multi-graph", "weighted", etc]
 
-"nodeAttributes": [list of keys contained in the json that define node-level attributes], ex: ["name", etc].
+"nodeAttributes": [list of keys contained in the json that define node-level attributes], ex: ["name", etc]
+
+"edgeAttributes": {"key": "explanation of key"}
 
 
 
@@ -72,9 +74,11 @@ Hence, the **overall spec** would look as follows:
 {
   "graphAttributes": [keys],
   "nodeAttributes": [keys],
+  "edgeAttributes": {"key": "explanation of key"},
   
   "graphs": {"key": value},
   "nodes": {node ID:{"key": value}},
+  
   
 
 }
