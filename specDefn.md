@@ -4,8 +4,8 @@ BP : this is just for readability, consider enforcing line limits in your markdo
 mostly the `` sections, because it's hard to read on github when the lines are really
 long
 
-
-Note the graphs should be stored in csv format with columns defined as: "node source" "node target" and "weight". Multi-graphs are stored in one csv, with the multiple weight columns referring to the multiple edges from the different graphs.
+``
+Note the graphs should be stored in csv format, with each row representing an edge. Columns defined as: "node source" "node target" and "weight". Multi-graphs are stored in one csv, with the multiple weight columns referring to the multiple edges from the different graphs. **Edge attributes** also **stored under separate cloumns in the csv** (see exampleEdgelist.csv). 
 
 BP : explain that each row of this csv represents an edge
 
@@ -13,26 +13,39 @@ BP : explain that each row of this csv represents an edge
 BP : misleading to call a csv itself sparse, there will be no "missing entries" in the 
 csv. But yes, it is storing the graph in a sparse format which is worth mentioning.
 
-The csv will be sparse! 
+The graphs are sparse, hence, non-existent edges between nodes have no entry in the csv.
 And for each graph, there is a json defining its metadata.
-
+``
 ### How to define attributes:
-Attributes are broken into three levels, and are formatted as a dictionary:
 
-The top level of the json contains a **list of keys** for each attribute for every level, followed by the individual attributes formatted as dictionary:
+##### General Guidelines:
+1. Use attribute names that reflect their semantic meaning  
+2. Attribute names should not be long, if it can be helped
+3. Use biologically relevant terms where possible
+4. Do not use capital letter for attributes 
+5. Attributes with null value can be omitted.
+6. Use "node" instead of "vertex" or other synonyms. 
+7. Use "edge" instead of other synonyms.
+8. Nodes are referred by their integer keys, which can be non-consecutive
+9. For Boolean-type attributes, use True/False for their value 
 
-BP : I don't understand what you mean by the above
+
+``
+Attributes are broken into three levels, and their key/value pairs are formatted as a dictionary:
+
+The top level of the json contains a **list of attributes** for graph and node level, followed by the individual key/value pairs formatted as dictionary. Note, edge attributes DO NOT have a list of keys because that information is contained in the headers of the edgelist csv. In the json, the edge attributes will only be explained and WILL NOT contain key/value pairs:
+
+
 
 ```
 {
-"graphAttributes": [list of keys contained in the json that define global graph-level attributes], ex: ["multi-graph", "weughted", etc]
+"graphAttributes": [list of keys contained in the json that define global graph-level attributes], ex: ["multi-graph", "weighted", etc]
 
 "nodeAttributes": [list of keys contained in the json that define node-level attributes], ex: ["name", etc].
-Please specifically use the term "node" to refer to these attributes instead of "vertex" or other synonyms.
 
 
-"edgeAttributes": [list of keys contained in the json that define edge-level attributes], ex: ["type", etc]  # BP: I know we went back and forth about edge attributes, do these correspond to 
-the columns of the edgelist? I'm a little confused what these would be in practice.
+
+
 }
 ```
 Following the list of keys, the attributes themselves are defined as dictionaries, with the above mentioned keys and their corresponding values. Note: Nodes are referred to them by their **integers IDs**. Edge attributes is a list of dictionaries, where the edges are referred to by their **"node source" and "node target"**. In the spec, please refrain from adding the "weights" of the edges, since the csv contains this information.:
@@ -74,21 +87,21 @@ If there are attributes that are common among the nodes/edges, for example metad
 
 
 
-
+``
 ### MUST HAVE ATTRIBUTES:
 ```
 { "graph": {
 
-# BP: always make something boolean if you can
-"multi-graph": defines if the graph is a multi-graph, options: "yes" or "no" 
-# BP: True/False
-# Is this not just read off from the number of columns in the csv? 
 
-"directed/undirected": defines if the graph is directed or not, options: "directed" or "undirected",
-# BP: "directed": True/False
+"multi-graph": defines if the graph is a multi-graph, options: "True/False"
+
+# BP: Is this not just read off from the number of columns in the csv? LOOK INTO THIS 
+
+"directed": defines if the graph is directed or not, options: "True/False",
 
 
-"weighted": defines if the graph is weighted or not, options: "yes" or "no",
+
+"weighted": defines if the graph is weighted or not, options: "True/False",
 # BP: True/False
 # BP: on second thought, can be calculated from the graph if you specify how to store 
 # an unweighted graph.
@@ -96,7 +109,7 @@ If there are attributes that are common among the nodes/edges, for example metad
 # the csv, just source and target." Though we'd have to decide what to do for multigraph
 # not sure about this one but we should ahve this conversation
 
-"hollow": "yes" or "no" to indicate the absence or presence, respectively, of self-loops
+"hollow": "True/False" to indicate the absence or presence, respectively, of self-loops
 # BP: Can be calculated from the graph
 
 
@@ -147,8 +160,6 @@ If there are attributes that are common among the nodes/edges, for example metad
 ```
 
 ### USER DEFINED ATTRIBUTES:
-Other options that the user can define. 
+Other options that the user can define, following above guidelines. 
 
-BP : I don't know what the below means
-
-Please err on the side of well defined attributes.  
+ 
