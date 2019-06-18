@@ -1,0 +1,28 @@
+### Comparison of different graph spec methods:
+
+1. Json Graph Specification: https://github.com/jsongraph/json-graph-specification
+Pros:
+- all in one file
+- in json so can use in built Py func/netwrokx func to use it 
+- very well laid out how to use it
+
+Cons: 
+- edge/node/graph get their own objects.
+- edge object seems redundant with attributes such as "relation", and each edge might have repeatitive attributes ("directed"), 
+- don't know where the weights for the edges go (check to make sure in json)
+- seems verbose so gets large and maybe hard to handle
+
+
+2. Graphml:
+Pros:
+- all in one file
+- the top of the file lists the keys and defines them, with the type of value it is
+
+Cons:
+- gets large and hard to read
+- can't readily extract the graph from file and need additional func/packages to handle (check this)
+- some of the above arguments apply (with edges are separate objects so "node source/target" gets repetitive)
+
+
+
+Our spec: we can easily get the graph, and metadata is separate.. above methods don't have this (the graph is with the metadata)
