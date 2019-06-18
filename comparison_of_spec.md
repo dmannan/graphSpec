@@ -13,7 +13,7 @@ Cons:
 - seems verbose so gets large and maybe hard to handle
 
 
-2. Graphml:
+2. Graphml (Read: http://www2.sta.uwi.edu/~mbernard/research_files/fileformats.pdf):
 Pros:
 - all in one file
 - the top of the file lists the keys and defines them, with the type of value it is
@@ -25,4 +25,4 @@ Cons:
 
 
 
-Our spec: we can easily get the graph, and metadata is separate.. above methods don't have this (the graph is with the metadata)
+Our spec: we can easily get the graph, and metadata is separate.. above methods don't have this (the graph is with the metadata). Openml format matches ours
