@@ -19,16 +19,17 @@ And for each graph, there is a json defining its metadata.
 ### How to define attributes:
 
 ##### General Guidelines:
-1. Use attribute names that reflect their semantic meaning  
-2. Attribute names should not be long, if it can be helped
-3. Use biologically relevant terms where possible
-4. Do not use capital letter for attributes 
-5. Attributes with null value can be omitted.
-6. Use "node" instead of "vertex" or other synonyms. 
-7. Use "edge" instead of other synonyms.
-8. Nodes are referred by their integer keys, which can be non-consecutive
-9. For Boolean-type attributes, use True/False for their value
-10. Use plural form for attributes that are plural 
+1. Use attribute names that reflect their semantic meaning
+2. If there are attributes that can be calculated from the graph, do not specify them  
+3. Attribute names should not be long, if it can be helped
+4. Use biologically relevant terms where possible
+5. Do not use capital letter for attributes 
+6. Attributes with null value can be omitted.
+7. Use "node" instead of "vertex" or other synonyms. 
+8. Use "edge" instead of other synonyms.
+9. Nodes are referred by their integer keys, which can be non-consecutive
+10. For Boolean-type attributes, use True/False for their value
+11. Use plural form for attributes that are plural 
 
 
 ``
