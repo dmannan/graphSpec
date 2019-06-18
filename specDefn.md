@@ -27,7 +27,8 @@ And for each graph, there is a json defining its metadata.
 6. Use "node" instead of "vertex" or other synonyms. 
 7. Use "edge" instead of other synonyms.
 8. Nodes are referred by their integer keys, which can be non-consecutive
-9. For Boolean-type attributes, use True/False for their value 
+9. For Boolean-type attributes, use True/False for their value
+10. Use plural form for attributes that are plural 
 
 
 ``
@@ -48,7 +49,7 @@ The top level of the json contains a **list of attributes** for graph and node l
 
 }
 ```
-Following the list of keys, the attributes themselves are defined as dictionaries, with the above mentioned keys and their corresponding values. Note: Nodes are referred to them by their **integers IDs**. Edge attributes is a list of dictionaries, where the edges are referred to by their **"node source" and "node target"**. In the spec, please refrain from adding the "weights" of the edges, since the csv contains this information.:
+Following the list of keys, the attributes themselves are defined as dictionaries, with the above mentioned keys and their corresponding values. Note: Nodes are referred to them by their **integers IDs**:
 ```
 # BP: we should consider calling these graphs, nodes, cause they may be multiple 
 # BP: in the multigraph case is graph a list of dicts? 
@@ -56,9 +57,9 @@ Following the list of keys, the attributes themselves are defined as dictionarie
 # but now I'm wondering if a list would make more sense. A dict of integer keys seems
 # clunky when you could just use a list... unless you let the integer keys be non-
 # consecutive.
-{"graph": {"key": "value"},
-"node": {"0":{"key": "value"}, "1": {"key": "value"}, etc},
-"edge": [{"node source": "value", "node target": "value", "attribute": "value"}, etc]
+{"graphs": {"key": "value"},
+"nodes": {"0":{"key": "value"}, "1": {"key": "value"}, etc},
+
 
 }
 
@@ -70,10 +71,10 @@ Hence, the **overall spec** would look as follows:
 {
   "graphAttributes": [keys],
   "nodeAttributes": [keys],
-  "edgeAttributes": [keys],
-  "graph": {"key": value},
-  "node": {node ID:{"key": value}},
-  "edge": [{"node source": value, "node target": value, "key": value}]
+  
+  "graphs": {"key": value},
+  "nodes": {node ID:{"key": value}},
+  
 
 }
 
