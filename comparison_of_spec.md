@@ -26,6 +26,10 @@ Cons:
 
 Article describing file formats: http://www.maths.adelaide.edu.au/matthew.roughan/papers/hitch_hikers_guide.pdf
 https://gephi.org/users/supported-graph-formats/
+https://arxiv.org/abs/1503.02781
+- from these articles, I gather that having an edgelist would make it easy to change data if mistakes are made- so it is easy to use. We don't need extra software engineering effort to use our spec. Don't need additional software to use a csv file and load a json (there are packages in to read a json in R and Py). 
 
 
 Our spec: we can easily get the graph, and metadata is separate.. above methods don't have this (the graph is with the metadata). Openml format matches ours
+
+The above formats (even ours) is portable? 
