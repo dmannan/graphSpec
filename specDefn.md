@@ -1,11 +1,7 @@
 ### Outline of spec:
 
-BP : this is just for readability, consider enforcing line limits in your markdown,
-mostly the `` sections, because it's hard to read on github when the lines are really
-long
 
-``
-Note the graphs should be stored in csv format, with each row representing an edge. Columns defined as: "node source" "node target" and "weight". Multi-graphs are stored in one csv, with the multiple weight columns referring to the multiple edges from the different graphs.  
+Note the graphs should be stored in csv format, with each row representing an edge. Columns defined as: "node source" "node target" and "weight"(if the graph is weighted). If the graph is unweighted, then a row of "node source" and "node target" exists if there is an edge between the. Multi-graphs are stored in one csv, with the multiple weight columns referring to the multiple edges from the different graphs.  
 
 BP : explain that each row of this csv represents an edge
 
@@ -14,8 +10,8 @@ BP : misleading to call a csv itself sparse, there will be no "missing entries" 
 csv. But yes, it is storing the graph in a sparse format which is worth mentioning.
 
 The graphs are sparse, hence, non-existent edges between nodes have no entry in the csv.
-And for each graph, there is a json defining its metadata.
-``
+And for each graph, there is a json defining its metadata. Multi-graph metadata is contained in one json. 
+
 ### How to define attributes:
 
 ##### General Guidelines:
@@ -32,38 +28,16 @@ And for each graph, there is a json defining its metadata.
 11. Use plural form for attributes that are plural 
 
 
-``
-Attributes are broken into three levels, and their key/value pairs are formatted as a dictionary:
-
-The top level of the json contains a **list of attributes** for graph, node, and edge level, followed by the individual key/value pairs formatted as dictionary.
-
-
-
 ```
-{
-"graphAttributes": [list of keys contained in the json that define global graph-level attributes], ex: ["multi-graph", "weighted", etc]
-
-"nodeAttributes": [list of keys contained in the json that define node-level attributes], ex: ["name", etc]
-
-"edgeAttributes": [list of keys in the json that defines edge-level attributes], ex: ["electrical weight, etc]
-
-
-
+Attributes are broken into three levels, and their key/value pairs are formatted as a dictionary:
+Note: Nodes are referred to them by their **integers IDs**. Edges are reffered to by the row of the csv. The node and edge attributes are subsumed with the graph dictionary to keep the node and edge data that corresponds to the graph:
+```
+## should the nodes/edges be a list of dicts or dict of dicts
+{"graph": {"key for graph": "value for the graph",
+"nodes": ["0":{"key": "value"}, "1": {"key": "value"}, etc],
+"edges": ["0": {"key": "value"}, etc]
 
 }
-```
-Following the list of keys, the attributes themselves are defined as dictionaries, with the above mentioned keys and their corresponding values. Note: Nodes are referred to them by their **integers IDs**. Edges are reffered to by the row of the csv:
-```
-# BP: we should consider calling these graphs, nodes, cause they may be multiple 
-# BP: in the multigraph case is graph a list of dicts? 
-# BP: I realize I stored the nodes as below for the c. elegans example I sent you
-# but now I'm wondering if a list would make more sense. A dict of integer keys seems
-# clunky when you could just use a list... unless you let the integer keys be non-
-# consecutive.
-{"graphs": {"key": "value"},
-"nodes": {"0":{"key": "value"}, "1": {"key": "value"}, etc},
-"edges": {"0": {"key": "value"}, etc}
-
 }
 
 
@@ -72,14 +46,19 @@ Following the list of keys, the attributes themselves are defined as dictionarie
 Hence, the **overall spec** would look as follows:
 ```
 {
-  "graphAttributes": [keys],
-  "nodeAttributes": [keys],
-  "edgeAttributes": [keys],
   
-  "graphs": {"key": value},
-  "nodes": {node ID:{"key": value}},
-  "edges": {row of csv:{"key":value}}
   
+  "graph": {"key": value,
+  
+  "nodes": [list of dictionaries refferenced by nodeID],
+  "edges": [list of dictionary referrenced by edgeID(row of the csv file)]
+  
+  
+  
+  
+  }
+  
+
   
 
 }
@@ -89,12 +68,16 @@ Hence, the **overall spec** would look as follows:
 
 ```
 
-When defining the attributes, if the attribute is binary use "True" and "False" as options in the spec.
+
 If there are attributes that are common among the nodes/edges, for example metadata contained in atlases, please create a separate json for them instead of subsuming it into json for each of the graphs.
 
 
 
 ``
+
+
+
+
 ### MUST HAVE ATTRIBUTES:
 ```
 { "graph": {
@@ -115,7 +98,7 @@ If there are attributes that are common among the nodes/edges, for example metad
 # i.e. the spec says "unweighted graph should not have a column for edge weights in 
 # the csv, just source and target." Though we'd have to decide what to do for multigraph
 # not sure about this one but we should ahve this conversation
-
+##DM: for an unweighted multigraph, we'll just have 0 in the column where no edge 
 "hollow": "True/False" to indicate the absence or presence, respectively, of self-loops
 # BP: Can be calculated from the graph
 
