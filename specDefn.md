@@ -58,10 +58,7 @@ Hence, the **overall spec** would look as follows:
 ```
 ### Multigraphs are stored as follows:
 ```
-{
-  "graphs": [list of dictionaries containing the metadata of each graph, where each graph is the column of the csv edgelist]
 
-}
 
 {
 "graphs":[
@@ -73,6 +70,7 @@ Hence, the **overall spec** would look as follows:
   "edges": [list of dictionary referrenced by edgeID(row of the csv file)]
   }
   },
+
   {
   "graph 2": {"key": value,
   
@@ -80,8 +78,6 @@ Hence, the **overall spec** would look as follows:
   "edges": [list of dictionary referrenced by edgeID(row of the csv file)]
   }
   }
-
-
 ]
 
 }
