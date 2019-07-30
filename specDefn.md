@@ -46,29 +46,47 @@ Note: Nodes are referred to them by their **integers IDs**. Edges are reffered t
 
 Hence, the **overall spec** would look as follows:
 ```
-{
-  
-  
+  {
   "graph": {"key": value,
   
   "nodes": [list of dictionaries refferenced by nodeID],
   "edges": [list of dictionary referrenced by edgeID(row of the csv file)]
-  
-  
-  
-  
   }
-  
-
-  
-
-}
-
-
+  }
 
 
 ```
+### Multigraphs are stored as follows:
+```
+{
+  "graphs": [list of dictionaries containing the metadata of each graph, where each graph is the column of the csv edgelist]
 
+}
+
+{
+"graphs":[
+  
+   {
+  "graph 1": {"key": value,
+  
+  "nodes": [list of dictionaries refferenced by nodeID],
+  "edges": [list of dictionary referrenced by edgeID(row of the csv file)]
+  }
+  },
+  {
+  "graph 2": {"key": value,
+  
+  "nodes": [list of dictionaries refferenced by nodeID],
+  "edges": [list of dictionary referrenced by edgeID(row of the csv file)]
+  }
+  }
+
+
+]
+
+}
+
+```
 
 If there are attributes that are common among the nodes/edges, for example metadata contained in atlases, please create a separate json for them instead of subsuming it into json for each of the graphs.
 
