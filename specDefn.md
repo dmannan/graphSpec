@@ -30,7 +30,7 @@ And for each graph, there is a json defining its metadata. Multi-graph metadata 
 
 ```
 Attributes are broken into three levels, and their key/value pairs are formatted as a dictionary:
-Note: Nodes are referred to them by their **integers IDs**. Edges are reffered to by the row of the csv. The node and edge attributes are subsumed with the graph dictionary to keep the node and edge data that corresponds to the graph:
+Note: Nodes are referred to them by their **integers IDs**. Edges are reffered to by the row of the csv. The node and edge attributes are subsumed with the graph dictionary to keep the node and edge data that corresponds to the graph. Multigraphs are stored as a list of dictionaries and individual graphs are refferenced by the column of the csv file:
 ```
 ## should the nodes/edges be a list of dicts or dict of dicts
 ```
@@ -57,6 +57,7 @@ Hence, the **overall spec** would look as follows:
 
 ```
 ### Multigraphs are stored as follows:
+
 ```
 
 
