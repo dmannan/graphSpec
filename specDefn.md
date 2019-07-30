@@ -33,6 +33,7 @@ Attributes are broken into three levels, and their key/value pairs are formatted
 Note: Nodes are referred to them by their **integers IDs**. Edges are reffered to by the row of the csv. The node and edge attributes are subsumed with the graph dictionary to keep the node and edge data that corresponds to the graph:
 ```
 ## should the nodes/edges be a list of dicts or dict of dicts
+```
 {"graph": {"key for graph": "value for the graph",
 "nodes": ["0":{"key": "value"}, "1": {"key": "value"}, etc],
 "edges": ["0": {"key": "value"}, etc]
