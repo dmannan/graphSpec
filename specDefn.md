@@ -5,7 +5,7 @@ mostly the `` sections, because it's hard to read on github when the lines are r
 long
 
 ``
-Note the graphs should be stored in csv format, with each row representing an edge. Columns defined as: "node source" "node target" and "weight". Multi-graphs are stored in one csv, with the multiple weight columns referring to the multiple edges from the different graphs. **Edge attributes** also **stored under separate cloumns in the csv** (see exampleEdgelist.csv). 
+Note the graphs should be stored in csv format, with each row representing an edge. Columns defined as: "node source" "node target" and "weight". Multi-graphs are stored in one csv, with the multiple weight columns referring to the multiple edges from the different graphs.  
 
 BP : explain that each row of this csv represents an edge
 
@@ -35,7 +35,7 @@ And for each graph, there is a json defining its metadata.
 ``
 Attributes are broken into three levels, and their key/value pairs are formatted as a dictionary:
 
-The top level of the json contains a **list of attributes** for graph and node level, followed by the individual key/value pairs formatted as dictionary. Note, edge attributes DO NOT have a list of keys because that information is contained in the headers of the edgelist csv. In the json, the edge attributes will only be explained and WILL NOT contain key/value pairs. Hence, edgeAttributes is a dictionary with keys are the attributes (headers of csv apart from node source/target) and value explains what the key is:
+The top level of the json contains a **list of attributes** for graph, node, and edge level, followed by the individual key/value pairs formatted as dictionary.
 
 
 
@@ -45,14 +45,14 @@ The top level of the json contains a **list of attributes** for graph and node l
 
 "nodeAttributes": [list of keys contained in the json that define node-level attributes], ex: ["name", etc]
 
-"edgeAttributes": {"key": "explanation of key"}
+"edgeAttributes": [list of keys in the json that defines edge-level attributes], ex: ["electrical weight, etc]
 
 
 
 
 }
 ```
-Following the list of keys, the attributes themselves are defined as dictionaries, with the above mentioned keys and their corresponding values. Note: Nodes are referred to them by their **integers IDs**:
+Following the list of keys, the attributes themselves are defined as dictionaries, with the above mentioned keys and their corresponding values. Note: Nodes are referred to them by their **integers IDs**. Edges are reffered to by the row of the csv:
 ```
 # BP: we should consider calling these graphs, nodes, cause they may be multiple 
 # BP: in the multigraph case is graph a list of dicts? 
@@ -62,7 +62,7 @@ Following the list of keys, the attributes themselves are defined as dictionarie
 # consecutive.
 {"graphs": {"key": "value"},
 "nodes": {"0":{"key": "value"}, "1": {"key": "value"}, etc},
-
+"edges": {"0": {"key": "value"}, etc}
 
 }
 
@@ -74,10 +74,11 @@ Hence, the **overall spec** would look as follows:
 {
   "graphAttributes": [keys],
   "nodeAttributes": [keys],
-  "edgeAttributes": {"key": "explanation of key"},
+  "edgeAttributes": [keys],
   
   "graphs": {"key": value},
   "nodes": {node ID:{"key": value}},
+  "edges": {row of csv:{"key":value}}
   
   
 
@@ -88,7 +89,7 @@ Hence, the **overall spec** would look as follows:
 
 ```
 
-When defining the attributes, if the attribute is binary use "yes" or "no" as options in the spec.
+When defining the attributes, if the attribute is binary use "True" and "False" as options in the spec.
 If there are attributes that are common among the nodes/edges, for example metadata contained in atlases, please create a separate json for them instead of subsuming it into json for each of the graphs.
 
 
@@ -99,9 +100,9 @@ If there are attributes that are common among the nodes/edges, for example metad
 { "graph": {
 
 
-"multi-graph": defines if the graph is a multi-graph, options: "True/False"
-
-# BP: Is this not just read off from the number of columns in the csv? LOOK INTO THIS 
+"multi-graph": defines if the graph is a multi-graph, options: "True/False" ### I'll take this off 
+##since the next point made by BP
+# BP: Is this not just read off from the number of columns in the csv? 
 
 "directed": defines if the graph is directed or not, options: "True/False",
 
