@@ -1,0 +1,96 @@
+---
+title: "Compatibility of Spec in R"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+
+
+Note that the data need to be read in as a csv to work with igraph
+```{r}
+library(igraph)
+
+dat = read.csv(file="./exampleEdgelist.csv", header=TRUE, sep=",")
+print(dat)
+
+xx= as.matrix(get.adjacency(graph.data.frame(dat)))
+print(xx)
+
+```
+Try different functions to see how igraph is interacting with the data. 
+```{r}
+get.adjacency(graph.data.frame(dat), attr = "weight") ## so with the attr = weight we  can get the weights
+
+g = graph_from_data_frame(dat, directed=FALSE)
+print(g, e=TRUE, v=TRUE)
+E(g)$weight
+correctAdj = get.adjacency(g, attr = "weight") ## this gives the correct adjacency matrix
+correctAdj
+are.connected(g, 'D', 'C')
+are.connected(g, 'C', 'D') 
+
+plot(g,layout=layout.fruchterman.reingold,edge.width=E(g)$weight)
+```
+
+
+Reading in data with missing values
+```{r}
+
+dat2 = read.csv(file="./singleEdgelis.csv", header=FALSE, sep=",")
+
+
+names(dat2) = c('node source',"node target", "weight")
+dat2
+
+
+g2 = graph_from_data_frame(dat2, directed=FALSE)
+print(g2, e=TRUE, v=TRUE)
+E(g2)$weight
+
+adj= get.adjacency(graph.data.frame(dat2), attr = "weight")
+
+print(adj)
+
+are.connected(g2, 1, 2)
+are.connected(g2, 3, 3)
+V(g2) ##gives the node sequence
+
+E(g2, P=NULL, path=NULL, directed=TRUE) ##gives the edge sequence
+neighbors(g2, 3)
+
+
+g2[3,2]##so it has the values correctly listed but why doesn't it display it?
+g2[4,3]
+
+adja=get.adjacency(g2,attr='weight',sparse=FALSE) ##ok the non sparse matrix representation prints the correct thing
+adja
+
+plot(g2,layout=layout.fruchterman.reingold,edge.width=E(g2)$weight)
+```
+```{r}
+g3 = read.graph("./exampleEdgelist.csv", format="edgelist") ##can't read the edgelist directly 
+```
+
+
+Let's try a multiple weighted graph
+```{r}
+
+dat3 = read.csv(file="./multiEdgelistNone.csv", header=FALSE, sep=",")
+
+
+names(dat3) = c("node source", "node target", "weight1", "weight2", "weight3")
+print(dat3)
+
+g3 = graph_from_data_frame(dat3, directed=FALSE)
+print(g2, e=TRUE, v=TRUE)
+E(g3)$weight
+
+
+```
+
+
+
+
